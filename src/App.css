@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body{
+  background-color: #000000 !important;
+  /*background-image: url("./assets/image/m2.png") !important;*/
+}
+body::before{
+  /*height: 100rem;*/
+  /*height: 100rem;*/
+  content: "";
+  position: absolute;
+  top: 10rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  box-shadow: 10px 30px 8px 8px black inset;
+  background-image: url("./assets/image/m2.png") !important;
+  background-repeat:repeat !important;
+  opacity: 0.25;
+}
+body::after{
+  background-image: url("./assets/image/m2.png") !important;
+  background-repeat:repeat !important;
+}
+label,button{
+  color:#ffff !important;
+}
+html, body {
+  height: auto !important;
+}
+select ,.ant-table {
+  color: #ffff !important;
+  background: transparent !important;
+}
