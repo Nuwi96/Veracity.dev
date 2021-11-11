@@ -18,13 +18,11 @@ export default class Description extends React.Component<DescriptionProps, Descr
         return (
             <div>
                 <div className="row">
-                    <button className="btn bg-danger"><a href="/"></a>Go Back</button>
-
                     <div className="col-12">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
-                                <li className="breadcrumb-item"><a href="#">Home</a></li>
-                                <li className="breadcrumb-item active"><a href="#">Dead Pool</a></li>
+                                <li className="breadcrumb-item"><a href="/">Home</a></li>
+                                <li className="breadcrumb-item active"><a href="/details">Dead Pool</a></li>
                             </ol>
                         </nav>
                     </div>

@@ -16,7 +16,8 @@ const columns = [
         title: 'Name',
         key: 'name',
         dataIndex: 'name',
-        render: (t: any, r: { name: any; }) => <img width="20%" height="10%" src={window.location.origin + `/${r.name}`}/>
+        render: (t: any, r: { name: any; }) => <img width="20%" height="10%"
+                                                    src={window.location.origin + `/${r.name}`}/>
     },
     {
         title: 'Age',
@@ -39,9 +40,9 @@ const columns = [
         key: 'action',
         render: (text: any, record: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
             <span>
-                <button className="btn bg-secondary">
+                <a href="/details"><button className="btn bg-secondary">
                     <i className="fa fa-eye" aria-hidden="true"></i>
-                </button>
+                </button></a>
             </span>
         ),
     },
