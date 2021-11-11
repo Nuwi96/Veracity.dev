@@ -16,8 +16,8 @@ export default class Description extends React.Component<DescriptionProps, Descr
 
     public render() {
         return (
-            <div>
-                <div className="row">
+            <div className="card mt-5">
+                <div className="row mt-2 pt-2">
                     <div className="col-12">
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
@@ -27,11 +27,11 @@ export default class Description extends React.Component<DescriptionProps, Descr
                         </nav>
                     </div>
                 </div>
-                <div className="row m-2 mb-4">
-                    <div className="border col-6 p-4">
-                        <img width="30%" height="100%" src={window.location.origin + `/dd.jpeg`}/>
+                <div className="row m-3 mb-4">
+                    <div className="col-5 d-flex">
+                        <img width="50%" height="100%" src={window.location.origin + `/dd.jpeg`}/>
                     </div>
-                    <div className="col-6 text-lg-start">
+                    <div className="col-7 text-left">
                         <div className="fa-2x">Dead Pool
                         </div>
                         <div className="d-flex">
@@ -45,7 +45,7 @@ export default class Description extends React.Component<DescriptionProps, Descr
                         </div>
 
                         <div>
-                            <div><span><i className="fa fa-tag" aria-hidden="true"></i>Action/Adventure</span>
+                            <div className="text-left"><span><i className="fa fa-tag" aria-hidden="true"></i>Action/Adventure</span>
                             </div>
                             <div className="fa-2x">Reviews</div>
 

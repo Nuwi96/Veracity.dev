@@ -70,3 +70,6 @@ select ,.ant-table {
   color: #ffff !important;
   background: transparent !important;
 }
+html{
+  overflow-x: hidden;
+}

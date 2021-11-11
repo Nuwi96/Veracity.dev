@@ -66,3 +66,18 @@ a:hover {
     font-weight: 500;
     font-size: 20px;
 }
+.breadcrumb {
+    background-color: transparent !important;
+
+}
+a{
+    color: #ffffff !important;
+}
+.black{
+    background: black !important;
+}
+.card {
+    background-color: #505050 !important;
+    top: 4rem !important;
+    height: 33rem!important;
+}
