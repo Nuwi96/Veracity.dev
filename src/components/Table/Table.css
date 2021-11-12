@@ -14,20 +14,27 @@ th {
     background: #a09c9c63 !important;
 }
 
-td:first-child{
+td:first-child {
     width: 30% !important;
 }
-td{
+
+td {
     font-weight: 500;
     font-size: 17px;
 }
-.ant-table-cell{
-text-align: center !important;
+
+.ant-table-cell {
+    text-align: center !important;
 }
 
-thead tr{
+thead tr {
     line-height: 3px;
 }
-.ant-table-wrapper{
-    background: rgb(0,0,0,0.2) !important;
+
+.ant-table-wrapper {
+    background: rgb(0, 0, 0, 0.2) !important;
+}
+
+.img {
+    box-shadow: 0px -1px 8px 11px #888888 !important;
 }

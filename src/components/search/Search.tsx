@@ -1,8 +1,10 @@
 import * as React from 'react';
 import './Search.css';
 import 'font-awesome/css/font-awesome.min.css';
+import MovieService from "../../services/MovieService";
 
 export interface SearchProps {
+    functionCall: any
 }
 
 export interface SearchState {
@@ -12,9 +14,9 @@ export interface SearchState {
 export default class Search extends React.Component<SearchProps, SearchState> {
     constructor(props: SearchProps) {
         super(props);
-        this.state = {};
+        this.state = {
+        };
     }
-
 
     public render() {
         return (
@@ -25,7 +27,9 @@ export default class Search extends React.Component<SearchProps, SearchState> {
                                className="fontAwesome form-control form-input rounded-pill search mr-3"
                                placeholder="&#xF002; Search anything..."/>
                         <div className="input-group-append">
-                            <button type="button" className="btn btn-danger btn-rounded rounded-pill">Search</button>
+                            <button type="button" className="btn btn-danger btn-rounded rounded-pill"
+                                    onClick={this.props.functionCall}>Search
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -10,7 +10,6 @@ import Description from "./components/Description/Description";
 
 
 function App() {
-    let RouterProps = {'location': '/description'};
     return (
         <div className="App">
             <div className="container">

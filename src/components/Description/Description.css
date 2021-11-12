@@ -70,7 +70,7 @@ a:hover {
     background-color: transparent !important;
 
 }
-a{
+.breadcrumb a{
     color: #ffffff !important;
 }
 .black{

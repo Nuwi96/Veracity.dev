@@ -3,41 +3,74 @@ import './Table.css';
 import 'antd/dist/antd.css';
 import {Table, Tag} from 'antd';
 import MovieService from "../../services/MovieService";
-
+let gg: Array<any> | null;
 export interface TableViewProps {
+    tableData: [],
 }
 
 export interface TableViewState {
+    genreList:[]
 
 }
+
 
 const columns = [
     {
         title: 'Name',
         key: 'name',
-        dataIndex: 'name',
-        render: (t: any, r: { name: any; }) => <img width="20%" height="10%"
-                                                    src={window.location.origin + `/${r.name}`}/>
+        dataIndex: 'backdrop_path',
+        render: (t: any, r: any) => <img className="img" width="100%" height="10%"
+                                                    src={'https://image.tmdb.org/t/p/original' + `${r.backdrop_path}`}/>
     },
     {
-        title: 'Age',
-        dataIndex: 'age',
+        title: 'Title',
+        dataIndex: 'title',
         key: 'age',
     },
     {
-        title: 'Address',
-        dataIndex: 'address',
-        key: 'address',
+        title: 'Genre',
+        dataIndex: 'genre_ids',
+        key: 'genre_ids',
+        // render: (genre_ids: any[]) => (
+        //     <>
+        //         {genre_ids.map(tag => {
+        //             let color = tag.length > 2 ? 'geekblue' : 'green';
+        //             // gg?.map(val =>{
+        //             //     if (tag.id === val) {
+        //             //         color = 'true';
+        //             //     }
+        //             // })
+        //             return (
+        //                 <Tag color={color}  key={tag}>
+        //                     {gg}
+        //                 </Tag>
+        //             );
+        //         })}
+        //     </>
+        // ),
+        // render: (text: any, record: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
+        //     <span>
+        //        {gg?.map((value, index, array) => (
+        //            {value,index,array}
+        //        ))}
+        //     </span>
+        // )
     },
     {
-        title: 'Tags',
+        title: 'Rating',
         key: 'tags',
         dataIndex: 'tags',
+
+    }, {
+        title: 'Year',
+        key: 'tags',
+        dataIndex: 'year',
 
     },
     {
         title: 'Action',
         key: 'action',
+        dataIndex: 'backdrop_path',
         render: (text: any, record: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
             <span>
                 <a href="/details"><button className="btn bg-secondary">
@@ -48,117 +81,38 @@ const columns = [
     },
 ];
 
-const data = [
-    {
-        key: '1',
-        name: 'dd.jpeg',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'dd.jpeg',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-    },
-    {
-        key: '3',
-        name: 'dd.jpeg',
-        age: 52,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-    },
-    {
-        key: '4',
-        name: 'dd.jpeg',
-        age: 62,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '5',
-        name: 'dd.jpeg',
-        age: 72,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-    },
-    {
-        key: '6',
-        name: 'dd.jpeg',
-        age: 82,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-    }, {
-        key: '7',
-        name: 'dd.jpeg',
-        age: 92,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '8',
-        name: 'dd.jpeg',
-        age: 12,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-    },
-    {
-        key: '9',
-        name: 'dd.jpeg',
-        age: 22,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-    }, {
-        key: '10',
-        name: 'dd.jpeg',
-        age: 17,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '11',
-        name: 'dd.jpeg',
-        age: 45,
-        address: 'London No. 1 Lake Park',
-        tags: ['loser'],
-    },
-    {
-        key: '12',
-        name: 'dd.jpeg',
-        age: 96,
-        address: 'Sidney No. 1 Lake Park',
-        tags: ['cool', 'teacher'],
-    },
-];
 
 export default class TableView extends React.Component<TableViewProps, TableViewState> {
     constructor(props: TableViewProps) {
         super(props);
-        this.state = {};
-
+        this.state = {
+            genreList:[]
+        };
+        this.getGenreList();
     }
 
-    getData = () => {
-        MovieService.getMovies()
+    getGenreList = () => {
+        MovieService.getGenreList()
             .then(response => {
-                console.log(response);
+                this.setState({
+                    genreList: response.data.genres,
+                });
+                gg = this.state.genreList
+                console.log(gg);
             })
             .catch(e => {
             });
     }
 
-    search = () => {
-        var text = 'my first love'
-        MovieService.search(text)
-            .then(response => {
-                console.log(response);
-            })
-            .catch(e => {
-            });
+    checkGenre =() =>{
+        console.log('check');
     }
 
     public render() {
         return (
             <div className="row m-2">
-                <Table columns={columns} dataSource={data}
+
+                <Table columns={columns} dataSource={this.props.tableData}
                        pagination={{
                            defaultPageSize: 4,
                            pageSize: 4,
