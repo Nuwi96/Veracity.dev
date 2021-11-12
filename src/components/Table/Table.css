@@ -38,3 +38,6 @@ thead tr {
 .img {
     box-shadow: 0px -1px 8px 11px #888888 !important;
 }
+.ant-tag{
+    color: black !important;
+}

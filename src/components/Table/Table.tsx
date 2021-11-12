@@ -31,23 +31,23 @@ const columns = [
         title: 'Genre',
         dataIndex: 'genre_ids',
         key: 'genre_ids',
-        // render: (genre_ids: any[]) => (
-        //     <>
-        //         {genre_ids.map(tag => {
-        //             let color = tag.length > 2 ? 'geekblue' : 'green';
-        //             // gg?.map(val =>{
-        //             //     if (tag.id === val) {
-        //             //         color = 'true';
-        //             //     }
-        //             // })
-        //             return (
-        //                 <Tag color={color}  key={tag}>
-        //                     {gg}
-        //                 </Tag>
-        //             );
-        //         })}
-        //     </>
-        // ),
+        render: (genre_ids: any[]) => (
+            <>
+                {genre_ids.map(tag => {
+                    let color = tag.length > 2 ? 'geekblue' : 'green';
+                    // gg?.map(val =>{
+                    //     if (tag.id === val) {
+                    //         color = 'true';
+                    //     }
+                    // })
+                    return (
+                        <Tag color={color}  key={tag}>
+                            {tag}
+                        </Tag>
+                    );
+                })}
+            </>
+        ),
         // render: (text: any, record: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
         //     <span>
         //        {gg?.map((value, index, array) => (
