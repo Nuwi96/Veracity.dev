@@ -76,7 +76,6 @@ export default class Description extends React.Component<DescriptionProps, Descr
                                                                         aria-hidden="true"></i></button>
                             </div>
                         </div>
-
                         <div>
                             <div className="text-left"><i className="fa fa-tag  mr-2" aria-hidden="true"></i>
                                 {this.state.genres.length > 0 ? this.state.data.genres.map((item: any) => (
@@ -90,8 +89,9 @@ export default class Description extends React.Component<DescriptionProps, Descr
                                     className="number02">/10</span>
                                 </div>
                                 <div>
-                                    <fieldset className="rating">
-                                        <Rating onClick={this.handleRating} ratingValue={this.state.data.vote_average}
+                                    <fieldset>
+                                        <Rating stars={10} onClick={this.handleRating}
+                                                ratingValue={this.state.data.vote_average}
                                                 emptyColor={'#cccccc'} fillColor={'#f1a545'}/* Rating Props */ />
                                     </fieldset>
                                 </div>

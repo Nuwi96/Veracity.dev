@@ -3,7 +3,7 @@ import './App.css';
 import './components/search/Search.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/react-fontawesome'
-import {Route,Routes ,Outlet} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Main from "./components/Main/Main";
 import Description from "./components/Description/Description";
 
@@ -14,7 +14,7 @@ function App() {
                 <main>
                     <Routes>
                         <Route path="/" element={<Main/>}/>
-                        <Route path='/details/:id' element={<Description /> } />
+                        <Route path='/details/:id' element={<Description/>}/>
                     </Routes>
                 </main>
             </div>

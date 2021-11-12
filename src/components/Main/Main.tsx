@@ -56,7 +56,7 @@ export default class Main extends React.Component<MainProps, MainState> {
         return (
             <div>
                 <Search parentCallback={this.handleCallback}/>
-                <Filter genreList={this.state.genreList}/>
+                <Filter parentCallback={this.handleCallback} genreList={this.state.genreList}/>
                 {this.state.render &&
                 <Table genreList={this.state.genreList} tableData={this.state.movies}/>
                 }

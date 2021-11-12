@@ -27,13 +27,12 @@ export default class Search extends React.Component<SearchProps, SearchState> {
             .then(response => {
                 this.setState({
                     result: response.data.results,
+                }, () => {
+                    this.onTrigger();
                 });
-                this.onTrigger();
             })
             .catch(e => {
             });
-
-
     }
 
     textChange(event: { target: { value: any; }; }) {
@@ -41,7 +40,6 @@ export default class Search extends React.Component<SearchProps, SearchState> {
     }
 
     onTrigger = () => {
-        console.log('onTrigger');
         this.props.parentCallback(this.state.result);
     };
 
