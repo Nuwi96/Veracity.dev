@@ -10,6 +10,7 @@ export interface MainProps {
 
 export interface MainState {
     movies: [],
+    genreList: [],
     render:boolean
 }
 export default class Main extends React.Component<MainProps, MainState> {
@@ -17,12 +18,24 @@ export default class Main extends React.Component<MainProps, MainState> {
         super(props);
         this.state = {
             movies: [],
+            genreList: [],
             render:false
         };
         this.getData();
+        this.getGenreList();
 
     }
+    getGenreList = () => {
+        MovieService.getGenreList()
+            .then(response => {
+                this.setState({
+                    genreList: response.data.genres,
+                });
 
+            })
+            .catch(e => {
+            });
+    }
     getData = () => {
         MovieService.getMovies()
             .then(response => {
@@ -39,9 +52,9 @@ export default class Main extends React.Component<MainProps, MainState> {
         return (
             <div>
                 <Search functionCall={this.getData}/>
-                <Filter/>
+                <Filter genreList={this.state.genreList}/>
                 { this.state.render &&
-                <Table tableData = {this.state.movies}/>
+                <Table genreList={this.state.genreList} tableData = {this.state.movies}/>
                 }
             </div>
         )
