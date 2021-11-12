@@ -2,7 +2,6 @@ import * as React from 'react';
 import './Table.css';
 import 'antd/dist/antd.css';
 import {Table, Tag} from 'antd';
-import MovieService from "../../services/MovieService";
 import {Button} from "react-bootstrap";
 
 let gg: Array<any> | null;
@@ -14,7 +13,7 @@ export interface TableViewProps {
 }
 
 export interface TableViewState {
-    genreList: []
+    genreList: [],
 }
 
 
@@ -78,18 +77,10 @@ const columns = [
         key: 'action',
         dataIndex: 'backdrop_path',
         render: (text: any, record: any, index: any) => < div className="btn-wrap">
-            <a href="/details"><Button className="btn bg-secondary" onClick={
-            (e) => {
-                console.log("corresponding email is :", record)
-            }
+            <a href={'/details/'+ `${record.id}`}><Button className="btn bg-secondary" onClick={
+                (e) => {
+                }
             }><i className="fa fa-eye" aria-hidden="true"></i></Button> </a></div>
-        // render: (text: any, record: { name: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; }) => (
-        //     <span>
-        //         <a href="/details"><button className="btn bg-secondary">
-        //             <i className="fa fa-eye" aria-hidden="true"></i>
-        //         </button></a>
-        //     </span>
-        // ),
     },
 ];
 
@@ -98,7 +89,7 @@ export default class TableView extends React.Component<TableViewProps, TableView
     constructor(props: TableViewProps) {
         super(props);
         this.state = {
-            genreList: []
+            genreList: [],
         };
     }
 
@@ -109,7 +100,6 @@ export default class TableView extends React.Component<TableViewProps, TableView
     public render() {
         return (
             <div className="row m-2">
-
                 <Table columns={columns} dataSource={this.props.tableData}
                        pagination={{
                            defaultPageSize: 4,

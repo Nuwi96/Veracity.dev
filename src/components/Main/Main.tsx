@@ -11,7 +11,7 @@ export interface MainProps {
 export interface MainState {
     movies: [],
     genreList: [],
-    render:boolean
+    render:boolean,
 }
 export default class Main extends React.Component<MainProps, MainState> {
     constructor(props: MainProps) {
@@ -19,7 +19,7 @@ export default class Main extends React.Component<MainProps, MainState> {
         this.state = {
             movies: [],
             genreList: [],
-            render:false
+            render:false,
         };
         this.getData();
         this.getGenreList();
@@ -47,7 +47,6 @@ export default class Main extends React.Component<MainProps, MainState> {
             .catch(e => {
             });
     }
-
     public render() {
         return (
             <div>
