@@ -54,7 +54,7 @@ export default class Description extends React.Component<DescriptionProps, Descr
                         <nav aria-label="breadcrumb">
                             <ol className="breadcrumb">
                                 <li className="breadcrumb-item"><a href="/">Home</a></li>
-                                <li className="breadcrumb-item active"><a href="/details">Dead Pool</a></li>
+                                <li className="breadcrumb-item active"><a>{this.state.data.title}</a></li>
                             </ol>
                         </nav>
                     </div>
