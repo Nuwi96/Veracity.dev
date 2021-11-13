@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Description.css';
 import MovieService from "../../services/MovieService";
-import {Rating} from 'react-simple-star-rating'
+import {Rating} from 'react-simple-star-rating';
 
 export interface DescriptionProps {
 
@@ -30,7 +30,6 @@ export default class Description extends React.Component<DescriptionProps, Descr
     getMovieDetails = () => {
         MovieService.getSelectedMovie(this.state.id)
             .then(response => {
-                console.log(response);
                 this.setState({
                     data: response.data,
                     genres: response.data.genres
@@ -49,6 +48,7 @@ export default class Description extends React.Component<DescriptionProps, Descr
     public render() {
         return (
             <div className="card mt-5">
+                {/*<button onClick={this.navigation}>Back</button>*/}
                 <div className="row mt-2 pt-2">
                     <div className="col-12">
                         <nav aria-label="breadcrumb">

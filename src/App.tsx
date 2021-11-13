@@ -3,7 +3,7 @@ import './App.css';
 import './components/search/Search.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import '@fortawesome/react-fontawesome'
-import {Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes} from "react-router-dom";
 import Main from "./components/Main/Main";
 import Description from "./components/Description/Description";
 
