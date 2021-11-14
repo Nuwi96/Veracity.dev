@@ -157,7 +157,7 @@ export default class Filter extends React.Component<FilterProps, FilterState> {
                     <select className="form-control rounded-pill" aria-label="Default select example"
                             value={this.state.sortBy}
                             onChange={this.sortBy}>
-                        <option selected value="">select an option</option>
+                        <option value="">select an option</option>
                         <option value="RATING">Ratings</option>
                         <option value="POPULARITY">Popularity</option>
                     </select>
