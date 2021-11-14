@@ -50,3 +50,8 @@ thead tr {
 .ant-spin-container::after {
     background: #000000 !important;
 }
+
+.ant-pagination-item-active {
+    background: transparent !important;
+    color: white !important;
+}

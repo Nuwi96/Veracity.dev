@@ -3,7 +3,6 @@ import './Filter.css';
 // @ts-ignore
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {Rating, RatingView} from "react-simple-star-rating";
 import MovieService from "../../services/MovieService";
 
 export interface FilterProps {
@@ -28,10 +27,29 @@ export default class Filter extends React.Component<FilterProps, FilterState> {
             genre: '',
             sortBy: '', result: ''
         };
+
         this.handleChange = this.handleChange.bind(this);
         this.setStartDate = this.setStartDate.bind(this);
         this.ratingChange = this.ratingChange.bind(this);
         this.sortBy = this.sortBy.bind(this);
+    }
+
+    componentDidMount() {
+        this.setData();
+    }
+
+    setData = () => {
+        let filters = JSON.parse(localStorage.getItem("filters") as string)
+        if (null !== filters) {
+            this.setState({
+                genre: filters.genre,
+                rating: filters.rating,
+                sortBy: filters.sortBy,
+                startDate: new Date(filters.startDate)
+            })
+        } else {
+            this.filterDetails();
+        }
     }
 
     filterDetails = () => {
@@ -48,7 +66,7 @@ export default class Filter extends React.Component<FilterProps, FilterState> {
         } else {
             sortBy = ''
         }
-
+        localStorage.setItem('filters', JSON.stringify(this.state));
         MovieService.filterData(genre, rating, sortBy, date)
             .then(response => {
                 this.setState({

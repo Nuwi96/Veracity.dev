@@ -22,6 +22,13 @@ export default class Main extends React.Component<MainProps, MainState> {
             genreList: [],
             render: false,
         };
+        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            // clear local storage when refreshing
+            localStorage.clear()
+        }
+    }
+
+    componentDidMount() {
         this.getData();
         this.getGenreList();
     }
@@ -32,24 +39,34 @@ export default class Main extends React.Component<MainProps, MainState> {
                 this.setState({
                     genreList: response.data.genres,
                 });
-
             })
             .catch(e => {
             });
     }
     getData = () => {
-        MovieService.getMovies()
-            .then(response => {
-                this.setState({
-                    movies: response.data.results,
-                    render: true
+        let tableData = JSON.parse(localStorage.getItem("tableData") as string)
+
+        if (null !== tableData) {
+            this.setState((prev => {
+                return {
+                    ...prev,
+                    movies: tableData
+                }
+            }))
+        } else {
+            MovieService.getMovies()
+                .then(response => {
+                    this.setState({
+                        movies: response.data.results,
+                    });
+                })
+                .catch(e => {
                 });
-            })
-            .catch(e => {
-            });
+        }
     }
     handleCallback = (childData: []) => {
-        this.setState({movies: childData})
+        this.setState({movies: childData});
+        localStorage.setItem('tableData', JSON.stringify(childData));
     }
 
     public render() {
@@ -57,7 +74,7 @@ export default class Main extends React.Component<MainProps, MainState> {
             <div>
                 <Search parentCallback={this.handleCallback}/>
                 <Filter parentCallback={this.handleCallback} genreList={this.state.genreList}/>
-                {this.state.render &&
+                {!this.state.render &&
                 <Table genreList={this.state.genreList} tableData={this.state.movies}/>
                 }
             </div>

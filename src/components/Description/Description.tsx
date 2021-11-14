@@ -45,10 +45,10 @@ export default class Description extends React.Component<DescriptionProps, Descr
         })
     }
 
+
     public render() {
         return (
             <div className="card mt-5">
-                {/*<button onClick={this.navigation}>Back</button>*/}
                 <div className="row mt-2 pt-2">
                     <div className="col-12">
                         <nav aria-label="breadcrumb">
@@ -103,7 +103,6 @@ export default class Description extends React.Component<DescriptionProps, Descr
                     </div>
                 </div>
             </div>
-
         )
     }
 }

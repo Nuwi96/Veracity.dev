@@ -16,7 +16,8 @@ export interface TableViewProps {
 
 export interface TableViewState {
     columns: any,
-    loading: boolean
+    loading: boolean,
+    defaultPage: number
 }
 
 
@@ -24,6 +25,7 @@ export default class TableView extends React.Component<TableViewProps, TableView
     constructor(props: TableViewProps) {
         super(props);
         this.state = {
+            defaultPage: 1,
             loading: true,
             columns: [
                 {
@@ -83,13 +85,31 @@ export default class TableView extends React.Component<TableViewProps, TableView
                     render: (text: any, record: any, index: any) => < div className="btn-wrap">
                         <Link to={'/details/' + `${record.id}`}><Button className="btn bg-secondary" onClick={
                             (e) => {
+                                localStorage.setItem('tableData', JSON.stringify(this.props.tableData));
                             }
                         }><i className="fa fa-eye" aria-hidden="true"></i></Button> </Link></div>,
 
                 },
-            ]
+            ],
+
         };
-        console.log(this.props.genreList.find(e => e['id'] === 80));
+
+    }
+
+    componentDidMount() {
+        const page = localStorage.getItem("page");
+        if (page != null) {
+            this.setState({
+                defaultPage: Number(page)
+            })
+        }
+    }
+
+    change = (page: any, pageSize: any) => {
+        localStorage.setItem('page', JSON.stringify(page));
+        this.setState({
+            defaultPage: Number(page)
+        })
     }
 
     public render() {
@@ -98,6 +118,8 @@ export default class TableView extends React.Component<TableViewProps, TableView
                 {/*<Spin spinning={this.state.loading} size="large" tip="Loading..." delay={500}>*/}
                 <Table columns={this.state.columns} dataSource={this.props.tableData}
                        pagination={{
+                           current: this.state.defaultPage,
+                           onChange: this.change,
                            defaultPageSize: 4,
                            pageSize: 4,
                            showSizeChanger: false,
