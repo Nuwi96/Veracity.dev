@@ -11,7 +11,6 @@ export interface MainProps {
 export interface MainState {
     movies: [],
     genreList: [],
-    render: boolean,
 }
 
 export default class Main extends React.Component<MainProps, MainState> {
@@ -20,7 +19,6 @@ export default class Main extends React.Component<MainProps, MainState> {
         this.state = {
             movies: [],
             genreList: [],
-            render: false,
         };
         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
             // clear local storage when refreshing
@@ -74,9 +72,9 @@ export default class Main extends React.Component<MainProps, MainState> {
             <div>
                 <Search parentCallback={this.handleCallback}/>
                 <Filter parentCallback={this.handleCallback} genreList={this.state.genreList}/>
-                {!this.state.render &&
+                {/*{!this.state.render &&*/}
                 <Table genreList={this.state.genreList} tableData={this.state.movies}/>
-                }
+                {/*}*/}
             </div>
         )
     }

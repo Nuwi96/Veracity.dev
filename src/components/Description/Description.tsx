@@ -73,11 +73,11 @@ export default class Description extends React.Component<DescriptionProps, Descr
                             </div>
                             <div className="ml-auto">
                                 <button className="btn bg-secondary"><i className="fa fa-bookmark"
-                                                                        aria-hidden="true"></i></button>
+                                                                        aria-hidden="true"/></button>
                             </div>
                         </div>
                         <div>
-                            <div className="text-left"><i className="fa fa-tag  mr-2" aria-hidden="true"></i>
+                            <div className="text-left"><i className="fa fa-tag  mr-2" aria-hidden="true"/>
                                 {this.state.genres.length > 0 ? this.state.data.genres.map((item: any) => (
                                     <span>{item.name} /</span>
                                 )) : ''}

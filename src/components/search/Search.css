@@ -34,7 +34,6 @@ body {
 }
 
 .form-input {
-    /*height: 55px;*/
     text-indent: 33px;
     border-radius: 10px
 }
@@ -43,10 +42,12 @@ body {
     box-shadow: none;
     border: none
 }
-.search{
+
+.search {
     background: #e9e3e342 !important;
     color: white !important;
 }
+
 .fontAwesome {
     font-family: 'Helvetica', FontAwesome, sans-serif;
 }
