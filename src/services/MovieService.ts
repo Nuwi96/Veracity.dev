@@ -16,8 +16,8 @@ const getSelectedMovie = (id: string) => {
     return http.get('https://api.themoviedb.org/3/movie/' + id + '?api_key=66ed895e7cd5320bdb1a8245e2a25f6a')
 }
 
-const filterData = (genre: any, rating: any, year: any, sortBy: any) => {
-    return http.get('https://api.themoviedb.org/3/discover/movie?with_genres=' + genre + '&primary_release_year=' + year + '&sort_by=' + sortBy + '&api_key=66ed895e7cd5320bdb1a8245e2a25f6a')
+const filterData = (genre: any, rating: any, sortBy: any, year: any) => {
+    return http.get('https://api.themoviedb.org/3/discover/movie?with_genres=' + genre + '&primary_release_year=' + year + '&sort_by=' + sortBy + '&vote_average.gte=' + rating + '&api_key=66ed895e7cd5320bdb1a8245e2a25f6a')
 }
 
 const MovieService = {
